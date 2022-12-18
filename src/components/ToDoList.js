@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
 import ToDoItem from "./ToDoItem"
 
 export default function ToDoList() {
@@ -12,7 +13,7 @@ export default function ToDoList() {
 
     const onTodoInputBlur = (e) => {
         let todo = {
-            id: todos.length + 1,
+            id: uuidv4(),
             text: e.target.value
         };
         setTodos (oldTodos => [
@@ -23,7 +24,7 @@ export default function ToDoList() {
     }
 
     const deleteTodoItemClickHandler = (id) => {
-        setTodos(oldTodos => oldTodos.filter(x=> x.id != id))
+        setTodos(oldTodos => oldTodos.filter(x=> x.id !== id))
     }
 
     return (
