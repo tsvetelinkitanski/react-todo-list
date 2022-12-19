@@ -14,10 +14,15 @@ export default function ToDoItem({
     //     }
     // }, [id]);
 
+    let listItemClasses = ['todo-item'];
+    if (todo.isDone) {
+        listItemClasses.push('todo-item-toggled')
+    }
+
     return (
-        <li onClick={() => onClick(todo.id)} className={todo.isDone ? 'todo-item' : ''}>
+        <li onClick={() => onClick(todo.id)} className={listItemClasses.join(' ')}>
             {todo.text}
-            <button onClick={() => onDelete(todo.id)}>X</button>
+            <button onClick={(e) => onDelete(e, todo.id)}>X</button>
         </li>
     )
 }

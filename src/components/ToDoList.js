@@ -24,7 +24,8 @@ export default function ToDoList() {
         e.target.value = '';
     }
 
-    const deleteTodoItemClickHandler = (id) => {
+    const deleteTodoItemClickHandler = (e,id) => {
+        e.stopPropagation()
         setTodos(oldTodos => oldTodos.filter(x => x.id !== id))
     }
 
