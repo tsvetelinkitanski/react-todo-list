@@ -1,17 +1,23 @@
-import { useEffect } from "react"
+// import { useEffect } from "react"
+import './ToDoItem.css';
 
 export default function ToDoItem({
-    id,
-    text,
-    onDelete
+    todo,
+    onDelete,
+    onClick
 }) {
-    useEffect(() => {
-        console.log(`${id} - Mounted`);
+    // useEffect(() => {
+    //     console.log(`${id} - Mounted`);
 
-        return () => {
-            console.log(`${id} - Unmounted`);
-        }
-    }, [id]);
+    //     return () => {
+    //         console.log(`${id} - Unmounted`);
+    //     }
+    // }, [id]);
 
-    return <li> {text} <button onClick={() => onDelete(id)}>X</button></li>
+    return (
+        <li onClick={() => onClick(todo.id)} className={todo.isDone ? 'todo-item' : ''}>
+            {todo.text}
+            <button onClick={() => onDelete(todo.id)}>X</button>
+        </li>
+    )
 }
