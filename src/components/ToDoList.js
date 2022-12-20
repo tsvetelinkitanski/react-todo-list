@@ -49,18 +49,24 @@ export default function ToDoList() {
 
     const isDoneTodoTask = (id) => {
         setTodos(oldTodos => {
-            let selectedTodoTask = oldTodos.find(x => x.id === id)
-            let selectedIndex = oldTodos.findIndex(x => x.id === id)
-            let toggledTodo = { ...selectedTodoTask, isDone: !selectedTodoTask.isDone }
+            //     let selectedTodoTask = oldTodos.find(x => x.id === id)
+            //     let selectedIndex = oldTodos.findIndex(x => x.id === id)
+            //     let toggledTodo = { ...selectedTodoTask, isDone: !selectedTodoTask.isDone }
 
-            return [
-                ...oldTodos.slice(0, selectedIndex),
-                toggledTodo,
-                ...oldTodos.slice(selectedIndex + 1)
-            ]
+            //     return [
+            //         ...oldTodos.slice(0, selectedIndex),
+            //         toggledTodo,
+            //         ...oldTodos.slice(selectedIndex + 1)
+            //     ]
+
+            return oldTodos.map(todo =>
+                todo.id === id
+                    ? { ...todo, isDone: !todo.isDone }
+                    : todo
+            );
         })
-    }
 
+    }
     return (
         <>
             <label htmlFor="todo-name">Add Todo</label>

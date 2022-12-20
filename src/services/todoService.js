@@ -4,7 +4,7 @@ export const createTodo = async (todo) => {
     let response = await fetch(`${API_URL}/MOCK_DATA`, {
         method: 'post',
         headers: {
-            'content-type': 'application-json'
+            'content-type': 'application/json'
         },
         body: JSON.stringify(todo)
     })
