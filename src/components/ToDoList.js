@@ -12,6 +12,10 @@ export default function ToDoList() {
     ])
 
     const onTodoInputBlur = (e) => {
+        if (e.target.value === '') {
+            return
+        }
+
         let todo = {
             id: uuidv4(),
             text: e.target.value,
@@ -24,7 +28,7 @@ export default function ToDoList() {
         e.target.value = '';
     }
 
-    const deleteTodoItemClickHandler = (e,id) => {
+    const deleteTodoItemClickHandler = (e, id) => {
         e.stopPropagation()
         setTodos(oldTodos => oldTodos.filter(x => x.id !== id))
     }
