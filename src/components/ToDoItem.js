@@ -22,7 +22,7 @@ export default function ToDoItem({
     return (
         <li onClick={() => onClick(todo.id)} className={listItemClasses.join(' ')}>
             {todo.text}
-            <button onClick={(e) => onDelete(e, todo.id)}>X</button>
+            <button onClick={(e) => onDelete(e, todo.id)} className = 'btn-style'>X</button>
         </li>
     )
 }
