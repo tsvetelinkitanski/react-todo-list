@@ -1,15 +1,25 @@
 import { useState } from "react"
+import { useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import ToDoItem from "./ToDoItem"
+import { createTodo } from '../services/todoService.js'
+
+// http://localhost:3030/jsonstore/MOCK_DATA
+
+const API_URL = 'http://localhost:3030/jsonstore'
+
 
 export default function ToDoList() {
 
-    const [todos, setTodos] = useState([
-        { id: 1, text: 'Clean your room', isDone: false },
-        { id: 2, text: 'Go to the gym', isDone: false },
-        { id: 3, text: 'Write some code', isDone: false },
+    const [todos, setTodos] = useState([])
 
-    ])
+    useEffect(() => {
+        fetch(`${API_URL}/MOCK_DATA`)
+            .then(res => res.json())
+            .then(data => {
+                setTodos(Object.values(data))
+            })
+    }, [])
 
     const onTodoInputBlur = (e) => {
         if (e.target.value === '') {
@@ -21,11 +31,15 @@ export default function ToDoList() {
             text: e.target.value,
             isDone: false,
         };
-        setTodos(oldTodos => [
-            ...oldTodos,
-            todo
-        ]);
-        e.target.value = '';
+
+        createTodo(todo)
+            .then(data => {
+                setTodos(oldTodos => [
+                    ...oldTodos,
+                    data
+                ]);
+                e.target.value = '';
+            })
     }
 
     const deleteTodoItemClickHandler = (e, id) => {
