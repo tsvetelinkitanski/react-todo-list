@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import ToDoItem from "./ToDoItem"
-import { createTodo } from '../services/todoService.js'
+import { createTodo, deleteTodoId } from '../services/todoService.js'
 
 // http://localhost:3030/jsonstore/MOCK_DATA
 
@@ -44,6 +44,7 @@ export default function ToDoList() {
 
     const deleteTodoItemClickHandler = (e, id) => {
         e.stopPropagation()
+        deleteTodoId (id)
         setTodos(oldTodos => oldTodos.filter(x => x.id !== id))
     }
 

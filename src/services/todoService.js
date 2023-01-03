@@ -13,3 +13,15 @@ export const createTodo = async (todo) => {
     return result
 
 }
+
+export const deleteTodoId = async (id) => {
+    let response = await fetch(`${API_URL}/MOCK_DATA/${id}`, {
+        method: 'delete',
+        headers: {
+            'content-type': 'application/json'
+        },
+    })
+    let result = response.json();
+
+    return result;
+}
