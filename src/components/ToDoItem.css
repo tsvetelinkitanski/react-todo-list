@@ -1,14 +1,13 @@
 .todo-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .todo-item-toggled {
-    text-decoration: line-through;
-    
+  text-decoration: line-through;
 }
 
 .btn-style {
-    background: rgb(213, 163, 25);
+  background: rgb(213, 163, 25);
   color: rgb(255, 255, 255);
   padding: 3px 10px;
   margin: 0 0 0 15px;
@@ -18,4 +17,13 @@
   line-height: 24px;
   cursor: pointer;
   vertical-align: bottom;
+}
+
+.btn-style:hover {
+  background: #fff;
+  color: rgb(213, 163, 25);
+}
+
+li {
+  list-style: none;
 }
